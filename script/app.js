@@ -1,6 +1,7 @@
 const tabs = document.querySelectorAll('.tab-btn');
 
 const issuesContainer = document.getElementById('issues-container');
+const issuesCount = document.getElementById('issues-count');
 
 const fetchAllIssues = async () => {
     const response = await fetch('https://phi-lab-server.vercel.app/api/v1/lab/issues');
@@ -101,6 +102,12 @@ let issues = [];
 const loadAllIssues = async () => {
     issues = await fetchAllIssues();
     renderIssues(issues.data);
+    updateDashBoard(issues.data);
+};
+
+const updateDashBoard = (issue) => {
+    issuesCount.textContent = '';
+    issuesCount.textContent = issue.length
 };
 
 tabs.forEach((tab) => {
