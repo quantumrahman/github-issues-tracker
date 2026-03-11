@@ -2,6 +2,7 @@ const tabs = document.querySelectorAll('.tab-btn');
 
 const issuesContainer = document.getElementById('issues-container');
 const issuesCount = document.getElementById('issues-count');
+const searchInt = document.getElementById('search-int');
 
 const fetchAllIssues = async () => {
     const response = await fetch('https://phi-lab-server.vercel.app/api/v1/lab/issues');
@@ -134,6 +135,14 @@ tabs.forEach((tab) => {
         renderIssues(filteredIssues);
         updateDashBoard(filteredIssues);
     });
+});
+
+searchInt.addEventListener('input', (e) => {
+    const searchValue = e.target.value;
+    
+    let searchFilter = issues.data.filter((search) => search.title.toLowerCase().includes(searchValue.toLowerCase().trim()));
+    renderIssues(searchFilter);
+    updateDashBoard(searchFilter);
 });
 
 loadAllIssues();
