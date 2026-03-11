@@ -118,6 +118,21 @@ tabs.forEach((tab) => {
         tabs.forEach((btn) => {
             btn.classList.remove('active-tab');
         });
+
+        currentTab.classList.add('active-tab');
+
+        let filteredIssues = [];
+
+        if (tabname === 'all') {
+            filteredIssues = issues.data;
+        } else if (tabname === 'open') {
+            filteredIssues = issues.data.filter((op) => op.status === tabname);
+        } else if (tabname === 'closed') {
+            filteredIssues = issues.data.filter((cl) => cl.status === tabname);
+        };
+
+        renderIssues(filteredIssues);
+        updateDashBoard(filteredIssues);
     });
 });
 
