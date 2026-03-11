@@ -7,6 +7,11 @@ const fetchAllIssues = async () => {
     return data;
 };
 
+let issues = [];
+const loadAllIssues = async () => {
+    issues = await fetchAllIssues();
+};
+
 tabs.forEach((tab) => {
     tab.addEventListener('click', (e) => {
         const currentTab = e.target;
@@ -17,3 +22,5 @@ tabs.forEach((tab) => {
         });
     });
 });
+
+loadAllIssues();
