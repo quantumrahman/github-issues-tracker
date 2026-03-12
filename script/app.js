@@ -266,7 +266,8 @@ const modalClosed = () => {
     body.classList.remove('overflow-hidden');
 };
 
-// tabSwitcher();
+// call function --------------------------------------------------->
+tabSwitcher();
 // modalClosed();
-// searchIssue();
-// loadIssues();
+searchIssue();
+loadIssues();
