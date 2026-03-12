@@ -242,17 +242,18 @@ const openModal = (issue) => {
     });
 };
 
-// const formatName = (name) => {
-//     if (!name) {
-//         return 'Unknown';
-//     };
+// format function ------------------------------------------------->
+const formatName = (name) => {
+    if (!name) {
+        return 'Unknown';
+    };
     
-//     return name
-//         .split('_')
-//         .map((word) => word[0]
-//         .toUpperCase() + word.slice(1))
-//         .join(' ');
-// };
+    return name
+        .split('_')
+        .map((word) => word[0]
+        .toUpperCase() + word.slice(1))
+        .join(' ');
+};
 
 // const modalClosed = () => {
 //     modalCloseBtn.addEventListener('click', (e) => {
