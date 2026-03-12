@@ -14,11 +14,11 @@ const fetchAllIssue = async () => {
     return issue.data;
 };
 
-// const fetchSingelIssue = async (id) => {
-//     const response = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`);
-//     const issue = await response.json();
-//     return issue.data;
-// };
+const fetchSingelIssue = async (id) => {
+    const response = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`);
+    const issue = await response.json();
+    return issue.data;
+};
 
 // const fetchSearchIssue = async (search) => {
 //     const response = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${search}`);
