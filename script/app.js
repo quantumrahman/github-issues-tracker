@@ -183,63 +183,64 @@ const searchIssue = () => {
     });
 };
 
-// const openModal = (issue) => {
-//     body.classList.add('overflow-hidden');
+// modal function -------------------------------------------------->
+const openModal = (issue) => {
+    body.classList.add('overflow-hidden');
 
-//     modal.classList.remove('hidden');
-//     modal.classList.add('flex');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
 
-//     const authorName = formatName(issue.author);
-//     const assigneeName = formatName(issue.assignee);
-//     const openOrCloseDate = new Date(issue.createdAt).toLocaleDateString();
+    const authorName = formatName(issue.author);
+    const assigneeName = formatName(issue.assignee);
+    const openOrCloseDate = new Date(issue.createdAt).toLocaleDateString();
 
-//     const title = document.getElementById('title');
-//     const badge = document.getElementById('badge');
-//     const badgeText = document.getElementById('badge-text');
-//     const openOrCloseText = document.getElementById('oc-text');
-//     const openOrCloseName = document.getElementById('author-name');
-//     const dateText = document.getElementById('date-text');
-//     const desText = document.getElementById('des-text');
-//     const assigneeText = document.getElementById('assignee-text');
-//     const priorityBadge = document.getElementById('priority-badge');
-//     const priorityText = document.getElementById('priority-text');
-//     const tagContainer = document.getElementById('tag-container');
+    const title = document.getElementById('title');
+    const badge = document.getElementById('badge');
+    const badgeText = document.getElementById('badge-text');
+    const openOrCloseText = document.getElementById('oc-text');
+    const openOrCloseName = document.getElementById('author-name');
+    const dateText = document.getElementById('date-text');
+    const desText = document.getElementById('des-text');
+    const assigneeText = document.getElementById('assignee-text');
+    const priorityBadge = document.getElementById('priority-badge');
+    const priorityText = document.getElementById('priority-text');
+    const tagContainer = document.getElementById('tag-container');
 
-//     title.textContent = issue.title;
-//     desText.textContent = issue.description;
-//     dateText.textContent = openOrCloseDate;
-//     openOrCloseName.textContent = authorName;
-//     assigneeText.textContent = assigneeName;
-//     priorityText.textContent = issue.priority;
+    title.textContent = issue.title;
+    desText.textContent = issue.description;
+    dateText.textContent = openOrCloseDate;
+    openOrCloseName.textContent = authorName;
+    assigneeText.textContent = assigneeName;
+    priorityText.textContent = issue.priority;
 
-//     badgeText.textContent = issue.status === 'open' ? 'Opened' : 'Closed';
-//     openOrCloseText.textContent = issue.status === 'open' ? 'Opened' : 'Closed';
+    badgeText.textContent = issue.status === 'open' ? 'Opened' : 'Closed';
+    openOrCloseText.textContent = issue.status === 'open' ? 'Opened' : 'Closed';
 
-//     badge.classList.toggle('bg-[#00A96E]', issue.status === 'open');
-//     badge.classList.toggle('bg-[#A855F7]', issue.status === 'closed');
+    badge.classList.toggle('bg-[#00A96E]', issue.status === 'open');
+    badge.classList.toggle('bg-[#A855F7]', issue.status === 'closed');
 
-//     const priorityColors = {
-//         high: 'bg-[#EF4444]',
-//         medium: 'bg-[#F59E0B]',
-//         low: 'bg-[#9CA3AF]'
-//     };
+    const priorityColors = {
+        high: 'bg-[#EF4444]',
+        medium: 'bg-[#F59E0B]',
+        low: 'bg-[#9CA3AF]'
+    };
 
-//     priorityBadge.classList.remove('bg-[#EF4444]', 'bg-[#F59E0B]', 'bg-[#9CA3AF]');
-//     priorityBadge.classList.add(priorityColors[issue.priority]);
+    priorityBadge.classList.remove('bg-[#EF4444]', 'bg-[#F59E0B]', 'bg-[#9CA3AF]');
+    priorityBadge.classList.add(priorityColors[issue.priority]);
 
-//     tagContainer.innerHTML = '';
-//     issue.labels.forEach((label) => {
-//         const tagDiv = document.createElement('div');
+    tagContainer.innerHTML = '';
+    issue.labels.forEach((label) => {
+        const tagDiv = document.createElement('div');
 
-//         tagDiv.className = `py-1.5 px-2 flex items-center justify-center gap-1 border ${label === 'bug' ? 'bg-[#FEECEC] border-[#FECACA]' : label === 'help wanted' ? 'bg-[#FFF8DB] border-[#FDE68A]' : label === 'good first issue' ? 'bg-[#DFF5E7] border-[#7EE2A8]' : label === 'enhancement' ? 'bg-[#DDF4FF] border-[#80CFFF]' : label === 'documentation' ? 'bg-[#F1E9FF] border-[#D8B9FF]' : 'bg-[#FEECEC] border-[#FECACA]'} rounded-full`;
-//         tagDiv.innerHTML = `
-//             <img src="./assets/${label === 'bug' ? 'bug' : label === 'help wanted' ? 'help' : label === 'good first issue' ? 'good' : label === 'enhancement' ? 'enhancement' : label === 'documentation' ? 'document' : 'bug'}-icon.png" alt="${label} icon" class="w-3 h-3">
-//             <span class="font-geist text-xs ${label === 'bug' ? 'text-[#EF4444]' : label === 'help wanted' ? 'text-[#D97706]' : label === 'good first issue' ? 'text-[#1A7F37]' : label === 'enhancement' ? 'text-[#0969DA]' : label === 'documentation' ? 'text-[#8250DF]' : 'text-[#EF4444]'} font-medium uppercase">${label}</span>
-//         `;
+        tagDiv.className = `py-1.5 px-2 flex items-center justify-center gap-1 border ${label === 'bug' ? 'bg-[#FEECEC] border-[#FECACA]' : label === 'help wanted' ? 'bg-[#FFF8DB] border-[#FDE68A]' : label === 'good first issue' ? 'bg-[#DFF5E7] border-[#7EE2A8]' : label === 'enhancement' ? 'bg-[#DDF4FF] border-[#80CFFF]' : label === 'documentation' ? 'bg-[#F1E9FF] border-[#D8B9FF]' : 'bg-[#FEECEC] border-[#FECACA]'} rounded-full`;
+        tagDiv.innerHTML = `
+            <img src="./assets/${label === 'bug' ? 'bug' : label === 'help wanted' ? 'help' : label === 'good first issue' ? 'good' : label === 'enhancement' ? 'enhancement' : label === 'documentation' ? 'document' : 'bug'}-icon.png" alt="${label} icon" class="w-3 h-3">
+            <span class="font-geist text-xs ${label === 'bug' ? 'text-[#EF4444]' : label === 'help wanted' ? 'text-[#D97706]' : label === 'good first issue' ? 'text-[#1A7F37]' : label === 'enhancement' ? 'text-[#0969DA]' : label === 'documentation' ? 'text-[#8250DF]' : 'text-[#EF4444]'} font-medium uppercase">${label}</span>
+        `;
 
-//         tagContainer.appendChild(tagDiv);
-//     });
-// };
+        tagContainer.appendChild(tagDiv);
+    });
+};
 
 // const formatName = (name) => {
 //     if (!name) {
