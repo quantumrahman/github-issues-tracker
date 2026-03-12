@@ -7,6 +7,9 @@
 
 // const tabs = document.querySelectorAll('.tab-btn');
 
+// empty array ------------------------------------------------------->
+let issues = [];
+
 // fetch function ---------------------------------------------------->
 const fetchAllIssue = async () => {
     const response = await fetch('https://phi-lab-server.vercel.app/api/v1/lab/issues');
@@ -26,12 +29,12 @@ const fetchSearchIssue = async (search) => {
     return issue.data;
 };
 
-// let issues = [];
-// const loadIssues = async () => {
-//     issues = await fetchAllIssue();
-//     renderIssue(issues);
-//     updateIssuesCount(issues);
-// };
+// load function --------------------------------------------------->
+const loadIssues = async () => {
+    issues = await fetchAllIssue();
+    renderIssue(issues);
+    updateIssuesCount(issues);
+};
 
 // render function ------------------------------------------------->
 const renderIssue = (issue) => {
