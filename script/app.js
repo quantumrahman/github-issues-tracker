@@ -34,7 +34,6 @@ const fetchSearchIssue = async (search) => {
 // };
 
 // render function ------------------------------------------------->
-// update function ------------------------------------------------->
 const renderIssue = (issue) => {
     issuesContainer.innerHTML = '';
 
@@ -134,37 +133,38 @@ const updateIssuesCount = (issue) => {
     issuesCount.textContent = issue.length;
 };
 
-// const tabSwitcher = () => {
-//     tabs.forEach((tab) => {
-//         tab.addEventListener('click', async (e) => {
-//             const currentTab = e.target;
-//             const tabname = currentTab.dataset.tab;
+// switcher function ----------------------------------------------->
+const tabSwitcher = () => {
+    tabs.forEach((tab) => {
+        tab.addEventListener('click', async (e) => {
+            const currentTab = e.target;
+            const tabname = currentTab.dataset.tab;
 
-//             tabs.forEach((tab) => {
-//                 tab.classList.remove('active-tab');
-//             });
+            tabs.forEach((tab) => {
+                tab.classList.remove('active-tab');
+            });
 
-//             currentTab.classList.add('active-tab');
+            currentTab.classList.add('active-tab');
 
-//             let filteredIssues = [];
+            let filteredIssues = [];
 
-//             if (tabname === 'all') {
-//                 filteredIssues = issues;
-//             };
+            if (tabname === 'all') {
+                filteredIssues = issues;
+            };
 
-//             if (tabname === 'open') {
-//                 filteredIssues = issues.filter((issue) => issue.status.includes(tabname));
-//             };
+            if (tabname === 'open') {
+                filteredIssues = issues.filter((issue) => issue.status.includes(tabname));
+            };
 
-//             if (tabname === 'closed') {
-//                 filteredIssues = issues.filter((issue) => issue.status.includes(tabname));
-//             };
+            if (tabname === 'closed') {
+                filteredIssues = issues.filter((issue) => issue.status.includes(tabname));
+            };
 
-//             renderIssue(filteredIssues);
-//             updateIssuesCount(filteredIssues);
-//         });
-//     });
-// };
+            renderIssue(filteredIssues);
+            updateIssuesCount(filteredIssues);
+        });
+    });
+};
 
 // const searchIssue = () => {
 //     searchInt.addEventListener('input', async (e) => {
