@@ -1,11 +1,12 @@
-// const issuesContainer = document.getElementById('issues-container');
-// const modalCloseBtn = document.getElementById('modal-close-btn');
-// const issuesCount = document.getElementById('issues-count');
-// const searchInt = document.getElementById('search-int');
-// const modal = document.getElementById('modal');
-// const body = document.getElementById('body');
+// dom access -------------------------------------------------------->
+const issuesContainer = document.getElementById('issues-container');
+const modalCloseBtn = document.getElementById('modal-close-btn');
+const issuesCount = document.getElementById('issues-count');
+const searchInt = document.getElementById('search-int');
+const modal = document.getElementById('modal');
+const body = document.getElementById('body');
 
-// const tabs = document.querySelectorAll('.tab-btn');
+const tabs = document.querySelectorAll('.tab-btn');
 
 // empty array ------------------------------------------------------->
 let issues = [];
