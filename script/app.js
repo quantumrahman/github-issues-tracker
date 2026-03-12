@@ -166,21 +166,22 @@ const tabSwitcher = () => {
     });
 };
 
-// const searchIssue = () => {
-//     searchInt.addEventListener('input', async (e) => {
-//         const searchValue = e.target.value.trim().toLowerCase();
+// search function ------------------------------------------------->
+const searchIssue = () => {
+    searchInt.addEventListener('input', async (e) => {
+        const searchValue = e.target.value.trim().toLowerCase();
 
-//         if (!searchValue) {
-//             renderIssue(issues);
-//             updateIssuesCount(issues);
-//             return;
-//         };
+        if (!searchValue) {
+            renderIssue(issues);
+            updateIssuesCount(issues);
+            return;
+        };
 
-//         const searchResult = await fetchSearchIssue(searchValue);
-//         renderIssue(searchResult);
-//         updateIssuesCount(searchResult);
-//     });
-// };
+        const searchResult = await fetchSearchIssue(searchValue);
+        renderIssue(searchResult);
+        updateIssuesCount(searchResult);
+    });
+};
 
 // const openModal = (issue) => {
 //     body.classList.add('overflow-hidden');
