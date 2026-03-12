@@ -34,6 +34,7 @@ const fetchSearchIssue = async (search) => {
 // };
 
 // render function ------------------------------------------------->
+// update function ------------------------------------------------->
 const renderIssue = (issue) => {
     issuesContainer.innerHTML = '';
 
@@ -127,10 +128,11 @@ const renderIssue = (issue) => {
     });
 };
 
-// const updateIssuesCount = (issue) => {
-//     issuesCount.textContent = '';
-//     issuesCount.textContent = issue.length;
-// };
+// update function ------------------------------------------------->
+const updateIssuesCount = (issue) => {
+    issuesCount.textContent = '';
+    issuesCount.textContent = issue.length;
+};
 
 // const tabSwitcher = () => {
 //     tabs.forEach((tab) => {
