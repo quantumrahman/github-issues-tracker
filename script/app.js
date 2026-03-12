@@ -255,14 +255,13 @@ const formatName = (name) => {
         .join(' ');
 };
 
-// const modalClosed = () => {
-//     modalCloseBtn.addEventListener('click', (e) => {
-//         modal.classList.remove('flex');
-//         modal.classList.add('hidden');
+// modal function -------------------------------------------------->
+const modalClosed = () => {
+    modal.classList.remove('flex');
+    modal.classList.add('hidden');
 
-//         body.classList.remove('overflow-hidden');
-//     });
-// };
+    body.classList.remove('overflow-hidden');
+};
 
 // tabSwitcher();
 // modalClosed();
