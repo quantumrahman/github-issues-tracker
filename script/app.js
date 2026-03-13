@@ -140,7 +140,12 @@ const renderIssue = (issue) => {
 // update function ------------------------------------------------->
 const updateIssuesCount = (issue) => {
     issuesCount.textContent = '';
-    issuesCount.textContent = issue.length;
+    
+    if (issue.length < 9) {
+        issuesCount.textContent = '0' + issue.length;
+    } else {
+        issuesCount.textContent = issue.length;
+    };
 };
 
 // modal function -------------------------------------------------->
