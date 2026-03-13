@@ -3,6 +3,7 @@ const issuesContainer = document.getElementById('issues-container');
 const issuesCount = document.getElementById('issues-count');
 const modal = document.getElementById('modal');
 const body = document.getElementById('body');
+const spinner = document.getElementById('spinner');
 
 const searchInt = document.getElementById('search-int');
 const userInt = document.getElementById('username');
@@ -38,7 +39,10 @@ const fetchSearchIssue = async (search) => {
 
 // load function --------------------------------------------------->
 const loadIssues = async () => {
+    toggleSpinner(true);
     issues = await fetchAllIssue();
+    toggleSpinner(false);
+
     renderIssue(issues);
     updateIssuesCount(issues);
 };
@@ -237,8 +241,19 @@ const formatName = (name) => {
 const modalClosed = () => {
     modal.classList.remove('flex');
     modal.classList.add('hidden');
-
+    
     body.classList.remove('overflow-hidden');
+};
+
+// toggle function ------------------------------------------------->
+const toggleSpinner = (isLoading) => {
+    if (isLoading) {
+        spinner.classList.remove('hidden');
+        issuesContainer.classList.add('hidden');
+    } else {
+        spinner.classList.add('hidden');
+        issuesContainer.classList.remove('hidden');
+    };
 };
 
 // switcher event -------------------------------------------------->
@@ -266,7 +281,7 @@ tabs.forEach((tab) => {
         if (tabname === 'closed') {
             filteredIssues = issues.filter((issue) => issue.status.includes(tabname));
         };
-
+        
         renderIssue(filteredIssues);
         updateIssuesCount(filteredIssues);
     });
@@ -282,7 +297,10 @@ searchInt.addEventListener('input', async (e) => {
         return;
     };
 
+    toggleSpinner(true);
     const searchResult = await fetchSearchIssue(searchValue);
+    toggleSpinner(false);
+
     renderIssue(searchResult);
     updateIssuesCount(searchResult);
 });
@@ -291,17 +309,17 @@ searchInt.addEventListener('input', async (e) => {
 signBtn.addEventListener('click', (e) => {
     const usernameValue = userInt.value;
     const passwordValue = passInt.value;
-
+    
     if (usernameValue === 'admin' && passwordValue === 'admin123') {
         loginPage.classList.remove('flex');
         loginPage.classList.add('hidden');
-
+        
         mainPage.classList.remove('hidden');
     };
-
+    
     userInt.value = '';
     passInt.value = '';
 });
- 
+
 // call function --------------------------------------------------->
 loadIssues();
