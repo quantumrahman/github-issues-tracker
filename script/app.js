@@ -1,9 +1,16 @@
 // dom access -------------------------------------------------------->
 const issuesContainer = document.getElementById('issues-container');
 const issuesCount = document.getElementById('issues-count');
-const searchInt = document.getElementById('search-int');
 const modal = document.getElementById('modal');
 const body = document.getElementById('body');
+
+const searchInt = document.getElementById('search-int');
+const userInt = document.getElementById('username');
+const passInt = document.getElementById('password');
+const signBtn = document.getElementById('sign-btn');
+
+const loginPage = document.getElementById('login-page');
+const mainPage = document.getElementById('main-page');
 
 const tabs = document.querySelectorAll('.tab-btn');
 
@@ -136,56 +143,6 @@ const updateIssuesCount = (issue) => {
     issuesCount.textContent = issue.length;
 };
 
-// switcher function ----------------------------------------------->
-const tabSwitcher = () => {
-    tabs.forEach((tab) => {
-        tab.addEventListener('click', async (e) => {
-            const currentTab = e.target;
-            const tabname = currentTab.dataset.tab;
-
-            tabs.forEach((tab) => {
-                tab.classList.remove('active-tab');
-            });
-
-            currentTab.classList.add('active-tab');
-
-            let filteredIssues = [];
-
-            if (tabname === 'all') {
-                filteredIssues = issues;
-            };
-
-            if (tabname === 'open') {
-                filteredIssues = issues.filter((issue) => issue.status.includes(tabname));
-            };
-
-            if (tabname === 'closed') {
-                filteredIssues = issues.filter((issue) => issue.status.includes(tabname));
-            };
-
-            renderIssue(filteredIssues);
-            updateIssuesCount(filteredIssues);
-        });
-    });
-};
-
-// search function ------------------------------------------------->
-const searchIssue = () => {
-    searchInt.addEventListener('input', async (e) => {
-        const searchValue = e.target.value.trim().toLowerCase();
-
-        if (!searchValue) {
-            renderIssue(issues);
-            updateIssuesCount(issues);
-            return;
-        };
-
-        const searchResult = await fetchSearchIssue(searchValue);
-        renderIssue(searchResult);
-        updateIssuesCount(searchResult);
-    });
-};
-
 // modal function -------------------------------------------------->
 const openModal = (issue) => {
     body.classList.add('overflow-hidden');
@@ -266,8 +223,67 @@ const modalClosed = () => {
     body.classList.remove('overflow-hidden');
 };
 
+// switcher event -------------------------------------------------->
+tabs.forEach((tab) => {
+    tab.addEventListener('click', async (e) => {
+        const currentTab = e.target;
+        const tabname = currentTab.dataset.tab;
+
+        tabs.forEach((tab) => {
+            tab.classList.remove('active-tab');
+        });
+
+        currentTab.classList.add('active-tab');
+
+        let filteredIssues = [];
+
+        if (tabname === 'all') {
+            filteredIssues = issues;
+        };
+
+        if (tabname === 'open') {
+            filteredIssues = issues.filter((issue) => issue.status.includes(tabname));
+        };
+
+        if (tabname === 'closed') {
+            filteredIssues = issues.filter((issue) => issue.status.includes(tabname));
+        };
+
+        renderIssue(filteredIssues);
+        updateIssuesCount(filteredIssues);
+    });
+});
+
+// search event ---------------------------------------------------->
+searchInt.addEventListener('input', async (e) => {
+    const searchValue = e.target.value.trim().toLowerCase();
+
+    if (!searchValue) {
+        renderIssue(issues);
+        updateIssuesCount(issues);
+        return;
+    };
+
+    const searchResult = await fetchSearchIssue(searchValue);
+    renderIssue(searchResult);
+    updateIssuesCount(searchResult);
+});
+
+// sign-in event --------------------------------------------------->
+signBtn.addEventListener('click', (e) => {
+    const usernameValue = userInt.value;
+    const passwordValue = passInt.value;
+
+    if (usernameValue === 'admin' && passwordValue === 'admin123') {
+        loginPage.classList.remove('flex');
+        loginPage.classList.add('hidden');
+
+        mainPage.classList.remove('hidden');
+    };
+
+    userInt.value = '';
+    passInt.value = '';
+});
+ 
 // call function --------------------------------------------------->
-tabSwitcher();
-// modalClosed();
-searchIssue();
 loadIssues();
