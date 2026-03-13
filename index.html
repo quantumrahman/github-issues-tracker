@@ -20,10 +20,49 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <body id="body" class="relative">
-    <div class="w-full min-h-screen bg-[#f3f6f8]">
-        <!-- login start ----------------------------- -->
-        <!-- login end ------------------------------- -->
-    
+    <!-- login start ----------------------------- -->
+    <div id="login-page" class="w-full min-h-screen bg-[#f3f6f8] flex items-center justify-center p-5">
+        <div class="w-full max-w-[520px] min-h-[745px] bg-[#ffffff] rounded-lg p-8 space-y-6">
+            <div class="w-full flex items-center justify-center flex-col gap-6">
+                <div class="w-20 h-20 lg:w-[100px] lg:h-[100px]">
+                    <img src="./assets/github-logo.png" alt="github logo">
+                </div>
+                <div class="w-full text-center">
+                    <h1 class="font-geist text-2xl text-[#1F2937] font-semibold">GitHub Issues Tracker</h1>
+                    <p class="font-geist text-base text-[#64748B] font-normal">Sign in to manage your issues</p>
+                </div>
+            </div>
+            <div class="w-full space-y-4">
+                <div class="w-full flex justify-center flex-col gap-2">
+                    <label for="username" class="font-geist text-base text-[#1F2937] font-medium">Username</label>
+                    <input id="username" type="text" placeholder="Enter username" class="w-full p-4 bg-white border border-[#E4E4E7] rounded-lg font-geist text-base text-[#1F2937] font-normal outline-none placeholder:text-[#64748B]" autocomplete="off">
+                    <span class="font-geist text-sm text-[#4A00FF] font-normal">Default: admin</span>
+                </div>
+                <div class="w-full flex justify-center flex-col gap-2">
+                    <label for="username" class="font-geist text-base text-[#1F2937] font-medium">Password</label>
+                    <input id="username" type="text" placeholder="Enter password" class="w-full p-4 bg-white border border-[#E4E4E7] rounded-lg font-geist text-base text-[#1F2937] font-normal outline-none placeholder:text-[#64748B]" autocomplete="off">
+                    <span class="font-geist text-sm text-[#4A00FF] font-normal">Default: admin123</span>
+                </div>
+            </div>
+            <button class="w-full p-4 bg-[#4A00FF] border border-[#4A00FF] rounded-lg font-geist text-base text-[#ffffff] font-semibold cursor-pointer transition-colors ease-linear duration-100 hover:bg-[#4A00FF]/90 hover:border-[#4A00FF]/90">Sign In</button>
+            <div class="w-full flex items-center justify-center gap-2.5">
+                <div class="w-full border-t border-[#E4E4E7]"></div>
+                <span class="font-geist text-base text-[#1F2937] font-normal">OR</span>
+                <div class="w-full border-t border-[#E4E4E7]"></div>
+            </div>
+            <div class="w-full space-y-2 text-center">
+                <p class="font-geist text-sm text-[#64748B] font-normal">Demo Credentials:</p>
+                <div class="w-full flex items-center justify-center flex-col bg-[#F8FAFC] rounded-lg p-5 lg:p-6">
+                    <p class="font-geist text-base text-[#1F2937] font-normal"><span class="font-semibold">Username:</span> admin</p>
+                    <p class="font-geist text-base text-[#1F2937] font-normal"><span class="font-semibold">Password:</span> admin123</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- login end ------------------------------- -->
+
+    <!-- section start ------------------------------- -->
+    <div id="main-page" class="hidden w-full min-h-screen bg-[#f3f6f8]">
         <!-- header start ---------------------------- -->
         <header>
             <div class="w-full py-4 bg-white border-b border-[#E9E9E9] flex items-center justify-center flex-col px-5 gap-5 md:justify-between md:px-10 lg:px-20 lg:flex-row">
@@ -87,6 +126,7 @@
         </main>
         <!-- main end -------------------------------- -->
     </div>
+    <!-- section end --------------------------------- -->
 
     <!-- modal start ----------------------------- -->
     <div id="modal" class="fixed inset-0 bg-[#97a8bb]/50 z-10 hidden items-center justify-center p-5">
